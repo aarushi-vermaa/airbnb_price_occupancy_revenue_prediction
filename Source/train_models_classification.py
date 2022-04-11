@@ -69,5 +69,4 @@ results_df = pd.concat(temp1, axis=0)
 results_df.to_csv("Data/clf_model_val_results.csv", index=False)
 conf_m_df = pd.concat(temp2, axis=0)
 conf_m_df.columns = ['true class 0', 'true class 1', 'true class 2', 'model']
-conf_m_df = conf_m_df.iloc[1:, :]
 conf_m_df.to_csv("Data/clf_val_conf_matrix.csv", index=False)
