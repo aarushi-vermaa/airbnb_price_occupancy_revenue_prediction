@@ -2,15 +2,18 @@ import os
 import pickle
 import numpy as np
 import pandas as pd
-
+import warnings
 import xgboost as xgb
 import lightgbm as lgb
+from skopt import BayesSearchCV
+from skopt.space import Integer, Real
 
 from tqdm import tqdm
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error, make_scorer
 from sklearn.ensemble import RandomForestRegressor
 from utils import classify_columns
 
+warnings.filterwarnings('ignore')
 pd.set_option("display.max_columns", None)
 # Price prediction
 price_df = pd.read_csv("Data/Preprocessed_data/hawaii_reg.csv")
@@ -85,7 +88,6 @@ default_models = [(xgb.XGBRegressor(random_state=1234), 'xgboost_reg'),
                   (RandomForestRegressor(random_state=1234), 'rf_reg')]
 
 for idx, (model, model_name) in tqdm(enumerate(default_models, 1)):
-
     reg = model
     reg.fit(x_train, y_train_mean)
     preds = reg.predict(x_val)
@@ -94,5 +96,40 @@ for idx, (model, model_name) in tqdm(enumerate(default_models, 1)):
                                                               preds)))
     results_df.loc[idx, 'mae'] = mean_absolute_error(y_val_mean, preds)
 
+# XGBoost optimization
+lgbm_reg = lgb.LGBMRegressor(random_state=1234)
+mse = make_scorer(mean_squared_error,
+                  greater_is_better=False,
+                  needs_threshold=False)
 
+search_spaces = {'max_depth': Integer(3, 40),
+                 'learning_rate': Real(0.01, 0.3, 'log-uniform'),
+                 'n_estimators': Integer(100, 1000)}
+
+opt_lgbm = BayesSearchCV(lgbm_reg,
+                         search_spaces,
+                         scoring=mse,
+                         cv=3,
+                         n_iter=3,
+                         return_train_score=True,
+                         refit=True,
+                         optimizer_kwargs={'base_estimator': 'GP'},
+                         random_state=1234)
+opt_lgbm.fit(x_train, y_train_mean)
+opt_preds = opt_lgbm.predict(x_val)
+results_df.loc[4, 'model'] = "lgbm optimized"
+results_df.loc[4, 'rmse'] = (np.sqrt(mean_squared_error(y_val_mean, opt_preds)))
+results_df.loc[4, 'mae'] = mean_absolute_error(y_val_mean, opt_preds)
 results_df.to_csv("Data/reg_model_val_results.csv", index=False)
+
+# Train on all training data
+best_params = dict(opt_lgbm.best_params_)
+X = pd.concat([x_train, x_val], axis=0)
+y = pd.concat([y_train_mean, y_val_mean], axis=0)
+opt_lgbm = lgb.LGBMRegressor(random_state=1234, **best_params)
+opt_lgbm.fit(X, y)
+opt_lgbm.booster_.save_model("Models/lgbm_reg_opt.txt")
+
+xgb_reg = xgb.XGBRegressor(random_state=1234)
+xgb_reg.fit(X, y)
+xgb_reg.save_model("Models/xgb_reg.json")
