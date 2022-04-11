@@ -24,3 +24,13 @@ def classify_columns(x_train: pd.DataFrame, x_val: pd.DataFrame):
     x_train[numerical_features] = x_train[numerical_features].astype(float)
     x_val[numerical_features] = x_val[numerical_features].astype(float)
     return x_train, x_val
+
+
+def naive_predictions(df: pd.DataFrame):
+    """
+
+    :param df:
+    :return:
+    """
+    return df.groupby(['month'], as_index=False)[['log_price_mean']].mean()
+

@@ -11,7 +11,7 @@ from skopt.space import Integer, Real
 from tqdm import tqdm
 from sklearn.metrics import mean_squared_error, mean_absolute_error, make_scorer
 from sklearn.ensemble import RandomForestRegressor
-from utils import classify_columns
+from utils import classify_columns, naive_predictions
 
 warnings.filterwarnings('ignore')
 pd.set_option("display.max_columns", None)
@@ -61,16 +61,6 @@ y_val_mean = val_df.iloc[:, -2]
 y_val_std = val_df.iloc[:, -1]
 
 x_train, x_val = classify_columns(x_train, x_val)
-
-
-def naive_predictions(df: pd.DataFrame):
-    """
-
-    :param df:
-    :return:
-    """
-    return df.groupby(['month'], as_index=False)[['log_price_mean']].mean()
-
 
 results_df = pd.DataFrame(columns=['model', 'rmse', 'mae'])
 naive_preds = naive_predictions(train_df)
