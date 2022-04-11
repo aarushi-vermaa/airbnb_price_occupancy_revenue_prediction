@@ -11,3 +11,6 @@ true class 0,true class 1,true class 2,model
 745,412,128,rf_clf default
 125,1449,330,rf_clf default
 94,558,1018,rf_clf default
+660,486,139,random forest optimized
+85,1516,303,random forest optimized
+70,607,993,random forest optimized
