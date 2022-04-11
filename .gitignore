@@ -20,3 +20,14 @@
 /Data/Train/reviews.csv
 /Data/Train/reviews.csv.gz
 .idea
+/Source/users.yaml
+/Data/Preprocessed_data/broward_reg.csv
+/Data/Preprocessed_data/crete_reg.csv
+/Data/Preprocessed_data/hawaii_reg.csv
+/Models/svd_description.pickle
+/Models/svd_neighborhood.pickle
+/Models/tfidf_description.pickle
+/Models/tfidf_neighborhood.pickle
+/Data/Preprocessed_data/broward_cat.csv
+/Data/Preprocessed_data/crete_cat.csv
+/Data/Preprocessed_data/hawaii_cat.csv
