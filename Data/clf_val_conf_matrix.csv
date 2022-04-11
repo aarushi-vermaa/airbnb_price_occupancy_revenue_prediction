@@ -1,0 +1,12 @@
+true class 0,true class 1,true class 2,model
+500,757,647,random guess
+463,641,566,random guess
+743,406,136,xgboost_clf default
+152,1404,348,xgboost_clf default
+113,550,1007,xgboost_clf default
+715,435,135,lgbm_clf default
+117,1413,374,lgbm_clf default
+104,539,1027,lgbm_clf default
+745,412,128,rf_clf default
+125,1449,330,rf_clf default
+94,558,1018,rf_clf default
