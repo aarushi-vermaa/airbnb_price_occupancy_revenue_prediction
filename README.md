@@ -23,7 +23,7 @@ Step 2: Install required packages
 pip install -r requirements.txt
 ```
 
-Step 3: Download the data by running the `download_data.py` file by navigating to the `/source` folder    
+Step 3: Download the data by running the `download_data.py` file by navigating to the `/00_setup` folder    
 ``` 
 python3 download_data.py
 ```
