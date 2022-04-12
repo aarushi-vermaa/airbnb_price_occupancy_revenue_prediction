@@ -15,7 +15,7 @@ This project is built with Python 3, and the visualizations are created using Ju
 
 Step 1: Git clone the repo on your local machine    
 ```
-git clone [to paste link here]
+git clone https://github.com/aarushi-vermaa/705_FinalProject.git
 ```
 
 Step 2: Install required packages   
