@@ -1,0 +1,3 @@
+city,model,rmse,mae
+Broward,xgboost_reg default,0.6612586757361227,0.5270315573455583
+Crete,xgboost_reg default,1.3790383167990898,1.2418971363440723
