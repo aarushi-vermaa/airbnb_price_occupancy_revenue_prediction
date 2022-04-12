@@ -12,5 +12,5 @@
 9. `clf_test_conf_matrix.csv` - confusion matrix of the availability model `Source/train_models_classification.py` on the test data sets
 10. `clf_val_results.csv` - metrics of the availability model `Source/train_models_classification.py` on the test data sets
 
-Original data (folders 1-3) can be downloaded using `Source/download_data.py`
+Original data (folders 1-3) can be downloaded using `Source/download_data.py`  
 Description of the original data can be obtained from [insideairbnb.com website](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit)
