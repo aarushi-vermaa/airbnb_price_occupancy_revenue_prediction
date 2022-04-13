@@ -10,7 +10,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 from utils import classify_columns
 
 # %%
-data = pd.read_csv("Data/Preprocessed_data/revenue.csv")
+data = pd.read_csv("20_intermediate_files/revenue.csv")
 data['residuals'] = data.log_price_mean - data.predicted_price
 data['exp_pred'] = np.exp(data.predicted_price)
 data['exp_price'] = np.exp(data.log_price_mean)
@@ -33,7 +33,7 @@ sns.histplot(data, x='predicted_price',
              label='predicted log price', kde=True, ax=ax[0])
 sns.histplot(data, x='residuals', bins=50, ax=ax[1]).set(xlabel='Residuals')
 ax[0].legend()
-plt.savefig("Data/Img/residuals.png", dpi=600)
+plt.savefig("30_results/Plots/residuals.png", dpi=600)
 plt.show()
 
 # %%
@@ -49,14 +49,14 @@ sns.histplot(data, x='exp_pred',
 sns.histplot(data, x='exp_resids', bins=50, ax=ax[1]).set(xlabel='Residuals')
 ax[0].legend()
 
-plt.savefig("Data/Img/residuals_exp.png", dpi=600)
+plt.savefig("30_results/Plots/residuals_exp.png", dpi=600)
 plt.show()
 
 # %%
 sns.scatterplot(x='log_price_mean',
                 y='predicted_price',
                 data=data).set(title='Predicted vs Actual price')
-plt.savefig("Data/Img/price_scatter.png", dpi=600)
+plt.savefig("30_results/Plots/price_scatter.png", dpi=600)
 # plt.show()
 
 # %%
