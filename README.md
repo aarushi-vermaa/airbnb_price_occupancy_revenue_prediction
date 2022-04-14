@@ -1,4 +1,5 @@
-# How Price and Availability Impact Airbnb Revenue
+# Investing with Airbnb: Predicting Price and Availability of Listings
+
 Developer:  Aarushi Verma, Cindy Chiu, Dauren Bizhanov, Sydney Donati-Leach
 
 ## Project Objectives
