@@ -1,5 +1,6 @@
-# How Price and Availability Impact Airbnb Revenue
-Developer:  Aarushi Verma, Cindy Chiu, Dauren Bizhanov, Sydney Donati-Leach
+# Investing with Airbnb: Predicting Price and Availability of Listings
+
+Developers:  Aarushi Verma, Cindy Chiu, Dauren Bizhanov, Sydney Donati-Leach
 
 ## Project Objectives
 This project aims to help potential property investors to estimate their annual revenue. Our model aims to predict the average daily price and occupancy rate bracket for the next year for a listing using Airbnb data. By evaluating feature importance we also aim to help prospective hosts to increase the success of an Airbnb listing. 
