@@ -58,3 +58,7 @@ python3 predictions_on_test_data.py
 ```
 
 We leverage the model that performed the best on the validation set and predict it on the testing data (Broward County and Crete). The evaluation metrics of the testing data, including precision, recall, confusion matrix, RMSE and MAE, are saved in the `\Data` folder.  
+
+## Project Outcome
+The detailed research paper can be found in `/40_reports/Final Report.pdf`
+The video of our project presentation can be found here: https://youtu.be/DqS0XG79uHE
