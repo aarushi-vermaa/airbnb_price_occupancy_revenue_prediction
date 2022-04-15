@@ -9,9 +9,7 @@ This project aims to help potential property investors to estimate their annual 
 The data can be retrieved from the http://insideairbnb.com/get-the-data website. The city we’re training our model on is Hawaii, USA. Since the data is huge and zipped, the user can clone the github repository and run the download_data.py under the source folder. Running the `download_data.py` on the local machine will retrieve both training and testing data from the website and create a copy on your local machine. The files will be saved under the same folder as the script with 3 separate folders: `Train`, `Test_Broward` and `Test_Create`. Users can open the files on their local machine.
 
 ## Conclusion
-Our price model using XGBoost Regressor performed well on predicting Airbnb listing prices in Hawaii and Broward County, USA. It is not generalizable outside the US as it performed much worse in Crete, Greece. Important features for predicting listing prices were space dependent such as how many guests can be accommodated and how many bathrooms there are in the property. 
-For predicting yearly availability, our model using XGBoost Classifier performed moderately well. There was a lot of variability within the medium occupancy class due to the lack of ability to identify listings close to the cutoff point. This also means the model was not able to perform well in Broward County or Crete.  Therefore, our model can be used to predict revenue with lower and upper bounds only in Hawaii. 
-There are a few limitations in this analysis. First, the data only provided the insight for booking 365 days in advance, and did not include any historical information. Airbnb guests do not book their stays far in advance, so we would not be able to capture the true occupancy rate until the booking date has passed. Furthermore, there is no clear identifier in the data to distinguish whether a listing was booked or blocked by the host. Future work can incorporate methodologies from other studies such as the distance from the city center which can impact price. Also, access to data over multiple years could improve the price model to better capture the seasonality changes, and improve the availability model to achieve better accuracy
+Home-sharing services like Airbnb can become a viable source of passive income if the host chooses the correct price point and the listing is booked regularly. Previous studies focused on predicting listing prices and few focused on availability of a listing. Availability can be an important factor in predicting revenue as the listing will be profitless without any bookings. This research builds a model that is able to predict the price of a listing as well as anticipated availability based on Airbnb data. Investors could do a simple calculation of the annual occupancy rate multiplied by the nightly price to obtain the annual revenue of a listing. In this study, we used XGBoost to train on Hawaii data. We also perform cross-domain testing in Broward County, Florida and Crete, Greece. The price model performed well in both US locations while the performance of the availability model was limited.y
 
 
 ## Requirements 
@@ -61,10 +59,10 @@ Step 6: Test Model performance
 python3 predictions_on_test_data.py
 ```
 
-We leverage the model that performed the best on the validation set and predict it on the testing data (Broward County and Crete). The evaluation metrics of the testing data, including precision, recall, confusion matrix, RMSE and MAE, are saved in the `\Data` folder.  
+We leverage the model that performed the best on the validation set and predict it on the testing data (Broward County and Crete). The evaluation metrics of the testing data, including precision, recall, confusion matrix, RMSE and MAE, are saved in the `00_setup/Data` folder.  
 
 ## Project Outcome
-The detailed research paper can be found in [here](https://github.com/aarushi-vermaa/705_FinalProject/blob/main/40_report/Final%20Report.pdf)
+The detailed research paper can be found [here](https://github.com/aarushi-vermaa/705_FinalProject/blob/main/40_report/Final%20Report.pdf)
 
 
 The video of our project presentation can be found [here](https://youtu.be/DqS0XG79uHE)
