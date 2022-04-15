@@ -3,10 +3,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-
 def confusion_matrix_validation():
+    """
+    This function generates a confusion matrix with all the models 
+    we have used in the availablity classification on the validation set. 
+    """
     # read in the model performance file we generated
-    clf_model = pd.read_csv('../Data/clf_val_conf_matrix.csv')
+    clf_model = pd.read_csv('../30_results/Model Results/clf_val_conf_matrix.csv')
     fig , ax = plt.subplots(2,3, figsize=(16,12))
     grid = plt.GridSpec(2, 3, )
     ax1 = plt.subplot(grid[0, 0])
@@ -34,6 +37,10 @@ def confusion_matrix_validation():
     plt.savefig('confusion matrix validation.png')
 
 def confusion_matrix_test(clf_model:pd.DataFrame):
+    """
+    This function generates a confusion matrix with the XGBoost model
+    we have used in the availablity classification on the testing data. 
+    """
     # read in the model performance file we generated
     fig , axes = plt.subplots(1,2, figsize=(9,5))
     # loop through each test cities 
@@ -48,11 +55,10 @@ def confusion_matrix_test(clf_model:pd.DataFrame):
         axes[i].set_xlabel('Actual Class', fontsize=10)
         axes[i].set_ylabel('Predicted Class', fontsize=10)
         plt.gcf().tight_layout()
-    # delete the extra grid 
     plt.suptitle('Confusion Matrix of XGBoost Classifier with Testing Data', y = 1, fontsize = 14)
     plt.savefig('confusion matrix test.png')
 
 
-clf_test = pd.read_csv('../Data/clf_test_conf_matrix.csv')
+clf_test = pd.read_csv('../30_results/Model Results/clf_test_conf_matrix.csv')
 confusion_matrix_validation()
 confusion_matrix_test(clf_test)
