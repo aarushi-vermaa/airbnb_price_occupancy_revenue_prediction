@@ -17,12 +17,12 @@ The data can be retrieved from the http://insideairbnb.com/get-the-data website.
 ## Final Model
 
 #### Price Model:
-[!Price Model](https://github.com/aarushi-vermaa/705_FinalProject/blob/main/30_results/PriceModel.png)
+![Price Model](https://github.com/aarushi-vermaa/705_FinalProject/blob/main/30_results/PriceModel.png)
 
 RMSE and MAE of the Price: XGBoost with default parameters has the smallest RMSE and MAE. Our model was able to predict the price with a mean average error of $186.29
 
 #### Availability Model:
-[!Availability Model](https://github.com/aarushi-vermaa/705_FinalProject/blob/main/30_results/AvailabilityModel.png)
+![Availability Model](https://github.com/aarushi-vermaa/705_FinalProject/blob/main/30_results/AvailabilityModel.png)
 
 Availability model performance on the validation set (weighted average). All models performed almost at the same level in terms of precision with slight dominance with the optimized Random Forest model. However, the training and prediction speed of the Random Forest model is much slower than XGBoost and LGBM classifiers. Therefore, we decided to use the XGBoost model and be consistent with our model choices. All models perform approximately 50% better than random guessing
 
