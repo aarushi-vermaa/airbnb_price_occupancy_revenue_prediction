@@ -28,38 +28,54 @@ pip install -r requirements.txt
 Step 3: Download the data by running the `download_data.py` file by navigating to the `/00_setup` folder  
 
 ``` 
-python3 download_data.py
+python3 /00_setup/download_data.py
 ```
 
-Running this script retrieve both training and testing data from the website and create a copy on your local machine. The files will be saved under the same folder as the script with 3 separate folders: `Train`, `Test_Broward` and `Test_Create`. Users can access the files on their local machine. 
+Running this script retrieve both training and testing data from the website and create a copy on your local machine. The files will be saved under the same folder as the script with 3 separate folders: `Train`, `Test_Broward` and `Test_Create`. Users can access the files on their local machine. These source files can also be found in `/01_source_data/` folder. 
 
 Step 4: Preprocess the train and test data    
 ```
-python3 preprocessing.py
+python3 /00_setup/preprocessing.py
 ```
 
-Running the `preprocessing.py` will perform feature transformations on both the training set and testing files.
+Running the `preprocessing.py` in `/00_setup` folder will perform feature transformations on both the training set and testing files.
 
 Step 5: Train the models    
 
 For the price prediction model:   
 ```
-python3 train_models_regression.py
+python3 /00_setup/train_models_regression.py
 ```
 
 For the occupancy prediction:   
 ```
-python3 train_models_classification.py
+python3 /00_setup/train_models_classification.py
 ```
 
 Those two files contain multiple models that we have implemented for predictions. The `train_models_regression.py` includes RandomForest Regressor, XGBoost Regressor and LightBGM Regressor. The `train_models_classification.py` includes RandomForest Classifier, XGBoost Classifier and LightBGM Classifier Running these files will also save the model results as JSON files to `/30_results/Models` folder. In addition, the evaluation metrics of the validation data, including precision, recall, confusion matrix, RMSE and MAE, are saved in the `/30_results/Model Results` folder
  
 Step 6: Test Model performance    
 ```
-python3 predictions_on_test_data.py
+python3 /10_code/predictions_on_test_data.py
 ```
 
-We leverage the model that performed the best on the validation set and predict it on the testing data (Broward County and Crete). The evaluation metrics of the testing data, including precision, recall, confusion matrix, RMSE and MAE, are saved in the `00_setup/Data` folder.  
+We leverage the model that performed the best on the validation set and predict it on the testing data (Broward County and Crete). The evaluation metrics of the testing data, including precision, recall, confusion matrix, RMSE and MAE, are saved in the `/30_results/Model Results` folder.
+
+Step 7: Visualize Model performance
+```
+python3 /10_code/model_assessment_plots.py
+python3 /10_code/confusion matrix.py.py
+
+```
+
+We can further visualize those testing results and validation results using plots. This includes confusion matrix for occupancy prediction and residual plot for price prediction. These plots can be found in `30_results/Plots` folder. 
+
+Step 8: Generate Revenue 
+```
+python3 /10_code/predictions_on_test_data.py
+```
+We leveraged the model that performed the best on validation set for both occupancy and price prediction. Then we multiply the results and generate a range of revenue per year for the user. The revenue results are saved in the `/20_intermediate_files` folder.  
+
 
 ## Project Outcome
 The detailed research paper can be found [here](https://github.com/aarushi-vermaa/705_FinalProject/blob/main/40_report/Final%20Report.pdf)
