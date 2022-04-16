@@ -2,15 +2,17 @@
 
 Developers:  Aarushi Verma, Cindy Chiu, Dauren Bizhanov, Sydney Donati-Leach
 
-## Project Objectives
-This project aims to help potential property investors to estimate their annual revenue. Our model aims to predict the average daily price and occupancy rate bracket for the next year for a listing using Airbnb data. By evaluating feature importance we also aim to help prospective hosts to increase the success of an Airbnb listing. 
+## Project Outline
+
+Home-sharing services like Airbnb can become a viable source of passive income if the host chooses the correct price point and the listing is booked regularly. Previous studies focused on predicting listing prices and few focused on availability of a listing. Availability can be an important factor in predicting revenue as the listing will be profitless without any bookings. This research builds a model that is able to predict the price of a listing as well as anticipated annual availability based on Airbnb data. Investors could do a simple calculation of the annual occupancy rate multiplied by the nightly price to obtain the annual revenue of a listing. In this study, we used XGBoost to train on Hawaii data. We also perform cross-domain testing in Broward County, Florida and Crete, Greece. The price model performed well in both US locations while the performance of the availability model was limited.
+
+We see this project being beneficial to prospective investors by providing easier access to information that could help drive their investment decisions. This model can also fairly easily be adopted by other real estate based companyies as well as organizations in the hospitality industry.
 
 ## Data
-The data can be retrieved from the http://insideairbnb.com/get-the-data website. The city we’re training our model on is Hawaii, USA. Since the data is huge and zipped, the user can clone the github repository and run the download_data.py under the source folder. Running the `download_data.py` on the local machine will retrieve both training and testing data from the website and create a copy on your local machine. The files will be saved under the same folder as the script with 3 separate folders: `Train`, `Test_Broward` and `Test_Create`. Users can open the files on their local machine.
+The data can be retrieved from the http://insideairbnb.com/get-the-data website. The city we’re training our model on is Hawaii, USA. Since the data is huge and zipped, the user can clone the github repository and run the download_data.py under the setup folder. Running the `download_data.py` on the local machine will retrieve both training and testing data from the website and create a copy on your local machine. The files will be saved under the same folder as the script with 3 separate folders: `Train`, `Test_Broward` and `Test_Create`. Users can open the files on their local machine.
 
-## Conclusion
-Home-sharing services like Airbnb can become a viable source of passive income if the host chooses the correct price point and the listing is booked regularly. Previous studies focused on predicting listing prices and few focused on availability of a listing. Availability can be an important factor in predicting revenue as the listing will be profitless without any bookings. This research builds a model that is able to predict the price of a listing as well as anticipated availability based on Airbnb data. Investors could do a simple calculation of the annual occupancy rate multiplied by the nightly price to obtain the annual revenue of a listing. In this study, we used XGBoost to train on Hawaii data. We also perform cross-domain testing in Broward County, Florida and Crete, Greece. The price model performed well in both US locations while the performance of the availability model was limited.y
-
+## Experimental Design 
+![Experimental Design](https://github.com/aarushi-vermaa/705_FinalProject/blob/main/30_results/flowchart.png)
 
 ## Requirements 
 This project is built with Python 3, and the visualizations are created using Jupyter Notebooks. In order to run all the files without error, please follow the following steps:
